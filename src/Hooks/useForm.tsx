@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 
 
-export const useForm = (initialState: object): [object, (e: React.ChangeEvent<HTMLInputElement>) => void] => {
+export default function useForm(initialState: object): [object, (e: React.ChangeEvent<HTMLInputElement>) => void] {
 
     const [input, setInput] = useState(initialState);
 
@@ -14,7 +14,6 @@ export const useForm = (initialState: object): [object, (e: React.ChangeEvent<HT
         })
 
     }
-
 
     return [input, handleChange]
 
