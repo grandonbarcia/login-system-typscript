@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Container, Row, Col } from 'react-bootstrap'
 import List from './Components/List'
 import AddToList from './Components/AddToList'
+import Login from './Login/Login';
+
 
 
 export interface IState {
@@ -38,11 +41,13 @@ const App: React.FC = () => {
   })
 
   return (
-    <div className="App">
-      <h1>Hello Everyone</h1>
-      <List people={people} />
-      <AddToList people={people} setPeople={setPeople} />
-    </div>
+    <Container fluid='md'>
+      <Row>
+        <Col>
+          <Login />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
