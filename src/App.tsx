@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Container, Row, Col } from 'react-bootstrap'
@@ -17,7 +17,7 @@ export interface IState {
   }[]
 }
 
-const App: React.FC = () => {
+const App: FC = () => {
 
   const [people, setPeople] = useState<IState['people']>([
     {
@@ -34,19 +34,25 @@ const App: React.FC = () => {
     }
   ]);
 
+  const Center: FC = ({ children }) => {
 
-  people.map((person) => {
-
-
-  })
-
-  return (
-    <Container fluid='md'>
-      <Row>
-        <Col>
-          <Login />
+    return (
+      <Row className='justify-content-center h-100'>
+        <Col className='align-self-center' xl={'4'}>
+          {children}
         </Col>
       </Row>
+    )
+  }
+
+
+
+
+  return (
+    <Container className='h-100' fluid>
+      <Center>
+        <Login />
+      </Center>
     </Container>
   );
 }
