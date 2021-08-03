@@ -1,59 +1,51 @@
-import React, { FC, useState } from 'react';
-import logo from './logo.svg';
+import React, { FC } from 'react';
+
+//CSS
 import './App.css';
-import { Container, Row, Col } from 'react-bootstrap'
-import List from './Components/List'
-import AddToList from './Components/AddToList'
-import Login from './Login/Login';
+
+// Bootstrap 
+import { Container } from 'react-bootstrap'
+
+// React-Router
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+
+// Components
+import Login from './Login/';
+import Navi from './NavBar'
+import Admin from './Admin'
+import SignUp from './SignUp';
 
 
 
-export interface IState {
-  people: {
-    name: string
-    age: number
-    url: string
-    note?: string
-  }[]
-}
 
 const App: FC = () => {
 
-  const [people, setPeople] = useState<IState['people']>([
-    {
-      name: 'lebron james',
-      url: '',
-      age: 36,
-      note: 'basketball player'
-    },
-    {
-      name: 'kobe bryant',
-      url: '',
-      age: 35,
-      note: 'basketball player'
-    }
-  ]);
-
-  const Center: FC = ({ children }) => {
-
-    return (
-      <Row className='justify-content-center h-100'>
-        <Col className='align-self-center' xl={'4'}>
-          {children}
-        </Col>
-      </Row>
-    )
-  }
-
-
-
-
   return (
-    <Container className='h-100' fluid>
-      <Center>
-        <Login />
-      </Center>
-    </Container>
+    <>
+      <Router>
+        <Navi />
+        <Switch>
+          <Container className='h-100' fluid>
+            <Route path='/' exact>
+              <Login />
+            </Route>
+            <Route path='/Login'>
+              <Login />
+            </Route>
+            <Route path='/SignUp'>
+              <SignUp />
+            </Route>
+            <Route path='/Admin'>
+              <Admin />
+            </Route>
+          </Container>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
