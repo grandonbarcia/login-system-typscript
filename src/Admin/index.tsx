@@ -1,1 +1,5 @@
-import { } from './'
+
+import Admin from './Admin'
+
+
+export default Admin
